@@ -29,4 +29,34 @@ class ListTest extends AnyFlatSpec with Matchers {
   it should "return None when the list is empty" in {
     List2.safeTail(Nil) shouldBe None
   }
+
+  behavior of "setHead"
+
+  it should "add the item to the empty list" in {
+    List2.setHead(Nil, 1) shouldBe List2(1)
+  }
+
+  it should "replace the first item of a non-empty list" in {
+    List2.setHead(List2(1, 2), 3) shouldBe List2(3, 2)
+  }
+
+  behavior of "drop"
+
+  it should "return an empty list when there's nothing else to drop" in {
+    List2.drop(Nil, 50) shouldBe Nil
+  }
+
+  it should "remove the first n elements of the list" in {
+    List2.drop(List2(1, 2, 3, 4, 5), 3) shouldBe List2(4, 5)
+  }
+
+  behavior of "dropWhile"
+
+  it should "return an empty list when there's nothing else to drop" in {
+    List2.dropWhile(Nil, (a: Int) => a > 3) shouldBe Nil
+  }
+
+  it should "remove elements as long as they fulfill the predicate" in {
+    List2.dropWhile(List2(5, 6, 7, 1), (a: Int) => a > 3) shouldBe List2(1)
+  }
 }
