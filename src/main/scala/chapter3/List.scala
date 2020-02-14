@@ -32,6 +32,12 @@ object List2 {
     case Cons(x, rest) => if (p(x)) dropWhile(rest, p) else xs
   }
 
+  def init[A](xs: List2[A]): List2[A] = xs match {
+    case Nil           => throw new Exception("Blow it up")
+    case Cons(_, Nil)  => Nil
+    case Cons(h, rest) => Cons(h, init(rest))
+  }
+
   def apply[A](as: A*): List2[A] =
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))

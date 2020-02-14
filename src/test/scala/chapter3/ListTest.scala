@@ -59,4 +59,10 @@ class ListTest extends AnyFlatSpec with Matchers {
   it should "remove elements as long as they fulfill the predicate" in {
     List2.dropWhile(List2(5, 6, 7, 1), (a: Int) => a > 3) shouldBe List2(1)
   }
+
+  behavior of "init"
+
+  it should "remove the last item of a list" in {
+    List2.init(List2(1, 2)) shouldBe List2(1)
+  }
 }
