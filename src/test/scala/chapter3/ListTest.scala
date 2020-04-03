@@ -65,4 +65,60 @@ class ListTest extends AnyFlatSpec with Matchers {
   it should "remove the last item of a list" in {
     List2.init(List2(1, 2)) shouldBe List2(1)
   }
+
+  behavior of "lenght"
+
+  it should "return the length of a list" in {
+    List2.length(List2(1, 2, 3)) shouldBe 3
+  }
+
+  behavior of "sum"
+
+  it should "sum up the ints in a list" in {
+    List2.sum(List2(1, 2, 3)) shouldBe 6
+  }
+
+  behavior of "product"
+
+  it should "multiply the ints in a list" in {
+    List2.product(List2(1, 2, 3)) shouldBe 6
+  }
+
+  behavior of "lenght2"
+
+  it should "return the length of a list" in {
+    List2.length2(List2(1, 2, 3)) shouldBe 3
+  }
+
+  behavior of "reverse"
+
+  it should "reverse a list" in {
+    List2.reverse(List2(1, 2, 3)) shouldBe List2(3, 2, 1)
+  }
+
+  behavior of "foldRight2"
+
+  it should "do the same as foldRight" in {
+    List2.foldRight(List2(1, 2, 3), 0)(_ + _) shouldBe List2.foldRight2(
+      List2(1, 2, 3),
+      0
+    )(_ + _)
+  }
+
+  behavior of "append2"
+
+  it should "do the same as append" in {
+    List2.append(List2(1, 2, 3), List2(4, 5, 6)) shouldBe List2.append2(
+      List2(1, 2, 3),
+      List2(4, 5, 6)
+    )
+  }
+
+  behavior of "concat"
+
+  it should "concatenate a list of lists" in {
+    List2.concat(List2(List2(1, 2, 3), List2(4, 5, 6))) shouldBe List2(1, 2, 3,
+      4, 5, 6)
+  }
+
 }
